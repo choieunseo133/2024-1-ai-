@@ -1,96 +1,331 @@
 <!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <title>내 홈페이지</title>
-  </head>
-  <body>
-    <h1>홈페이지 제목</h1>
-    <hr color="purple" size="10">
-    <h2>첫번째 문단</h2>
-    <h3>두번째 문단</h3>
-    <h4>본문</h4>
-    <h4>본문</h4>
-    <hr size="5">
-    <h1>
-      <a href="https://youtu.be/FkNYe0sNOxE?si=PI3s-rAxtSF8dCAq" target="_blank"><img src=https://post-phinf.pstatic.net/MjAyMjEyMDJfMTY1/MDAxNjY5OTYyMTM4ODEw.KW6sxJlqI6-enq3rLzyJsVXUOd2kesGwRVMHJpJbtpQg.Z4GpGxUlqQMSyDNPvFlckfA5eWkzlvFmncZamQyBHQgg.JPEG/AdobeStock_502014147-1024x683.jpeg?type=w800_q75 width="200" height="140"></a>
-    </h1>
-    <p>자신의 마음을 모르겠는 강아지 (눌러보세요)</p>
-    <p>누르지마</p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Bugle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://estherchoi.dothome.co.kr/img/%EB%93%A4%EA%B3%A0%EB%8F%84%EB%A7%9D.jpg?_t=1719127188');
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            overflow-y: scroll;
+        }
 
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-image: url('https://estherchoi.dothome.co.kr/img/%EB%B0%B0%EA%B2%BD%EC%88%98%EC%A0%95.jpg?_t=1719129017');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-blend-mode: overlay;
+            position: relative;
+            z-index: 0;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 4px solid red;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        .header .logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .main-headline {
+            text-align: center;
+            font-size: 4.5em;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #333;
+            width: 100%;
+            font-family: 'Impact', sans-serif;
+        }
+
+        .main-headline h2 {
+            margin: 0;
+            font-size: 2em;
+            line-height: 1.2;
+        }
+
+        .main-headline h2:first-child {
+          font-size: 3em;
+        }
+
+        .sub-headline {
+            font-size: 1em;
+            opacity: 0.6;
+            text-align: center;
+            margin-top: 5px;
+            border-bottom: 4px solid black; /* 검정색 구분선 추가 */
+            padding-bottom: 10px; /* 구분선 아래 여백 추가 */
+        }
+
+        .main-article {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .article {
+            width: 48%;
+            padding: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .article:hover {
+            transform: translateY(-5px);
+        }
+
+        .article img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .article a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        .article h3 {
+            font-size: 3em;
+            line-height: 1.2;
+        }
+
+        .article p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        .video-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .video-section h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .video-section iframe {
+            width: 80%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* 흔들리는 애니메이션 */
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(3deg); }
+            50% { transform: rotate(-3deg); }
+            75% { transform: rotate(3deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .shaking-image {
+            position: fixed;
+            top: -20px;
+            right: 1200px;
+            width: 300px;
+            animation: shake 2s infinite;
+            z-index: 1000; /* 다른 콘텐츠 위에 표시되도록 설정합니다 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="https://estherchoi.dothome.co.kr/img/%EC%A0%9C%EB%AA%A9.png?_t=1719055265" alt="Daily Bugle Logo">
+            </div>
+        </div>
+        <div class="main-headline">
+            <h2>SPIDER-MAN:</h2>
+            <h2>HERO OR MENACE?</h2>
+            <div class="sub-headline">스파이더맨: 영웅인가 위협인가?</div>
+        </div>
+        <div class="main-article">
+            <div class="article left" onclick="showPopup('popup1')">
+                <h3>POLICE SEEK SPIDER-MAN!</h3>
+                <img src="https://estherchoi.dothome.co.kr/img/%EB%93%A4%EA%B3%A0%EB%8F%84%EB%A7%9D.jpg?_t=1719127188" alt="Mysterio to the rescue">
+            </div>
+            <div class="article right" onclick="showPopup('popup2')">
+                <h3>GUARDIAN OF PEACE<br>OR<br>THREAT TO TOE CITY?</h3>
+                <h3>평화의 수호자 혹은 도시의 위협?</h3>
+                <p>뉴욕 시티를 무대로 활동하는 슈퍼 히어로 스파이더맨에 대한 논란이 뜨겁게 불타고 있다. 그의 출현 이후, 범죄율은 하락했지만, 그의 활동 방식과 결과에 대한 의문이 여전히 남아있다.<br>
+                    스파이더맨의 대규모 사건 대응은 도시의 구조물 파괴와 밀접하게 연결되어 있다. 그의 장애물을 넘어서는 능력은 구조물에 더 큰 피해를 줄 수도 있다. 이에 대한 비판은 그의 힘과 책임 사이의 균형을 논란의 중심으로 두고 있다.<br>
+                    많은 시민들은 스파이더맨을 영웅으로 존경하지만, 그의 도시 위의 영향력에 대한 우려도 감추지 않는다. 그의 행동은 종종 의문의 여지가 있고, 공공 안전에 미칠 영향에 대한 논의가 이어지고 있다.<br>
+                    정부는 스파이더맨의 활동을 규제하려는 노력을 기울이고 있지만, 동시에 그의 능력을 이용해 사회에 긍정적인 변화를 이끌어내는 방안도 모색 중에 있다. 그의 입장에서 보면, 그는 도시의 마지막 방파제로서의 역할을 자처하고 있다.<br>
+                    스파이더맨은 도시의 미래에 대한 중요한 쟁점이 되고 있다. 그의 존재는 도시의 안전을 돕는 것일까, 아니면 새로운 위협을 가져올 가능성이 있는 것일까? 이 질문에 대한 답은 뉴욕시가 마주해야 할 중요한 과제 중 하나로 남아 있다.</p>
+                <p><a href="#">2024.06.24</a>.</p>
+            </div>
+        </div>
+
+        <div class="video-section">
+            <h2>Video of a citizen's eyewitness report</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ZbrN7WJz-FM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+    </div>
+
+    <!-- 흔들리는 이미지 추가 -->
+    <img class="shaking-image" src="https://estherchoi.dothome.co.kr/img/G.png?_t=1719135303" alt="Shaking Image">
+    
     <script>
-        // 알림
-        // alert( 'Hello, world!' );
-        // 개발자 도구에서 콘솔에 출력
-        console.log("Hello, world!");
-        /*
-         여러줄 
-         주석문
-         이렇게
-        */
-       // 변수
-       let name1 = "도라에몽";  // 변수 선언
-       let admin;   // 변수 선언
-       admin = name1;   // 변수값 복사?? 대입
-       // 안녕 도라에몽을 출력 
-       // alert("안녕! " + admin);   // 알림창 출력
-       // alert(`안녕! ${admin}`);   // 알림창 출력
-       // 이름 입력하세요
-       let name = prompt("이름 입력: ");
-       // 나이 입력하세요
-       let age = prompt("나이를 입력: ");
-       // 당신은 학생인가요?
-       // 확인 또는 취소
-       let isSt = confirm("당신은 학생?");
-       let st = "";  // 임시 변수
-       if (!isSt) {
-        alert("너는 누구냐~");
-       }
-       if (age >= 8 && age <= 13) {
-        // alert("초등학생");
-        st = "초등학생";
-       } else if (age >= 14 && age <= 16) {
-        st = "중학생";
-       } else if (age >= 17 && age <= 19) {
-        st = "고등학생";
-       } else if (age >= 20) {
-        st = "대학생";
-       } else {
-        st = "아기에요~";
-       }
-       // 알림 또는 콘솔에 위 정보들을 한번에 출력
-       // 만약에 8이상 13살이하면 초등학생
-       // 만약에 14이상 16살이하면 중학생
-       // 만약에 17이상 19세이하면 고등학생
-       // 20세 이상이면 대학생이나 성인
-       // 이름은 OOO 나이는 00살 위에서 나온 초등인지 중인지 고등인지 등등 출력하기
-
-       alert(`이름은 ${name} 나이는 ${age}살 ${st}입니다.`);
-
-      //  let result = prompt("나이를 입력: ");
-      //  alert(`당신의 나이는 ${result}살 입니다.`);
-      //  // 만약에 15세이상만 입장가능
-      //  if (result >= 15) {
-      //   alert("어서오세요~");
-      //  } else {
-      //   alert("가세요~");
-      //  }
-       // 15세이하는 가라~
-
-      //  result = confirm("당신이 주인인가요?");
-      //  // result 의 값은? true 또는 false
-      //  //alert(result);
-      //  if (result) {  // 만약에 true 이면
-      //   alert("네 주인님~ 어서오세요! 무엇을 도와 드릴까요?");
-      //  } else { // 아니면
-      //   alert("꺼져~");
-      //  }
-       
+        // Function to show popup
+        function showPopup(popupId) {
+            var popup = document.getElementById(popupId);
+            if (popup) {
+                popup.style.display = 'block';
+                // Scroll smoothly to the popup
+                popup.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                    inline: 'center'
+                });
+            }
+        }
     </script>
-    // 안녕
+</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Bugle</title>
+    <style>
+        /* 여기에 앞서 제공한 CSS 스타일들을 포함시킵니다. */
+        /* 댓글 관련 CSS 스타일 */
+        .comments {
+            margin-top: 20px;
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+        }
 
-  </body>
-</html>
-<p><a href="page1.html">다음페이지</a></p>
+        .comments h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #333;
+        }
 
+        .comments form {
+            margin-top: 10px;
+        }
+
+        .comments textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .comments input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .comment {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .comment p {
+            margin: 0;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <!-- 이전에 작성한 나머지 HTML 코드를 포함시킵니다. -->
+    <div class="container">
+        <!-- 나머지 코드는 위에 제공한 것을 그대로 사용합니다. -->
+
+        <!-- 댓글 섹션 -->
+        <div class="comments" id="comments-section">
+            <h3>댓글</h3>
+            <form id="comment-form">
+                <textarea id="comment-content" rows="4" placeholder="댓글을 작성하세요..."></textarea>
+                <br>
+                <input type="submit" value="댓글 작성">
+            </form>
+            <div id="comments-list">
+                <!-- 여기에 동적으로 댓글이 추가될 예정입니다. -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 이전에 작성한 JavaScript 코드를 포함시킵니다. -->
+    <script>
+        // 이전에 작성한 JavaScript 코드를 그대로 사용합니다.
+        function showPopup(popupId) {
+            var popup = document.getElementById(popupId);
+            if (popup) {
+                popup.style.display = 'block';
+                popup.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                    inline: 'center'
+                });
+            }
+        }
+
+        // 댓글 작성 폼 이벤트 처리
+        document.getElementById('comment-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // 폼 기본 동작 방지
+
+            // 댓글 내용 가져오기
+            var commentContent = document.getElementById('comment-content').value.trim();
+
+            if (commentContent === '') {
+                alert('댓글을 입력하세요.');
+                return;
+            }
+
+            // 댓글 생성 시각
+            var currentDate = new Date();
+            var formattedDate = currentDate.toLocaleDateString('ko-KR', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+
+            // 새 댓글 HTML 생성
+            var newCommentHTML = `
+                <div class="comment">
+                    <p>${commentContent}</p>
+                    <p><small>${formattedDate}</small></p>
+                </div>
+            `;
+
+            // 댓글 목록에 추가
+            var commentsList = document.getElementById('comments-list');
+            commentsList.innerHTML += newCommentHTML;
+
+            // 댓글 입력창 비우기
+            document.getElementById('comment-content').value = '';
+        });
+    </script>
+</body>
 </html>
+
